@@ -419,6 +419,10 @@ public API origin as a trusted CSRF origin:
 MEPRAM_CSRF_TRUSTED_ORIGINS=https://mepram-api-omop.<domain>
 ```
 
+The API also trusts the reverse proxy `X-Forwarded-Host` and
+`X-Forwarded-Proto` headers so Django validates the public host and HTTPS origin
+instead of the internal container URL.
+
 ## Current Scope
 
 Covered by `dashboard.sql`:
