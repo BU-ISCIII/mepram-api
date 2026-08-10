@@ -4,6 +4,15 @@ import os
 def _rate_env(name, default):
     return os.environ.get(name, default).strip()
 
+
+def _csv_env(name, default=""):
+    return [
+        item.strip()
+        for item in os.environ.get(name, default).split(",")
+        if item.strip()
+    ]
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get("MEPRAM_API_SECRET_KEY", "dev-only-mepram-api")
@@ -13,13 +22,14 @@ DEBUG = os.environ.get("MEPRAM_API_DEBUG", "true").lower() in {
     "yes",
     "on",
 }
-ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.environ.get(
-        "MEPRAM_API_ALLOWED_HOSTS", "localhost,127.0.0.1,0.0.0.0"
-    ).split(",")
-    if host.strip()
-]
+ALLOWED_HOSTS = _csv_env(
+    "MEPRAM_API_ALLOWED_HOSTS", "localhost,127.0.0.1,0.0.0.0"
+)
+CSRF_TRUSTED_ORIGINS = _csv_env("MEPRAM_CSRF_TRUSTED_ORIGINS")
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+# Trust this header only behind a controlled reverse proxy that overwrites it
+# before forwarding requests to Django.
+USE_X_FORWARDED_HOST = True
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -82,14 +92,10 @@ DATABASES = {
 MEPRAM_DASHBOARD_SCHEMA = os.environ.get(
     "MEPRAM_DASHBOARD_SCHEMA", DATABASES["default"]["NAME"]
 )
-MEPRAM_CORS_ALLOWED_ORIGINS = [
-    origin.strip()
-    for origin in os.environ.get(
-        "MEPRAM_CORS_ALLOWED_ORIGINS",
-        "http://127.0.0.1:3000,http://localhost:3000",
-    ).split(",")
-    if origin.strip()
-]
+MEPRAM_CORS_ALLOWED_ORIGINS = _csv_env(
+    "MEPRAM_CORS_ALLOWED_ORIGINS",
+    "http://127.0.0.1:3000,http://localhost:3000",
+)
 
 MEPRAM_AUTH_REQUIRED = os.environ.get("MEPRAM_AUTH_REQUIRED", "false").lower() in {
     "1",
