@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added enhancements
 
 - Added protected POST endpoint for reports [#15](https://github.com/BU-ISCIII/mepram-omop-api/pull/15)
+- Support CSRF origins behind HTTPS proxy [#15](https://github.com/BU-ISCIII/mepram-omop-api/pull/18)
 
 #### Fixes
 
