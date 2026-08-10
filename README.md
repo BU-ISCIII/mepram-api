@@ -56,6 +56,7 @@ MEPRAM_DB_PASSWORD=mepram_password
 MEPRAM_DB_PORT_HOST=6608
 MEPRAM_API_PORT=8100
 MEPRAM_CORS_ALLOWED_ORIGINS=http://127.0.0.1:3000,http://localhost:3000
+MEPRAM_CSRF_TRUSTED_ORIGINS=
 MEPRAM_AUTH_REQUIRED=true
 MEPRAM_DOCS_REQUIRE_STAFF=true
 MEPRAM_CREATE_DEFAULT_SUPERUSER=true
@@ -408,6 +409,14 @@ The MePRAM API CORS allowlist is controlled with:
 
 ```text
 MEPRAM_CORS_ALLOWED_ORIGINS=http://127.0.0.1:3000,http://localhost:3000
+```
+
+When the API is deployed behind an HTTPS reverse proxy and Django forms are
+enabled, for example protected Swagger or Django admin login, configure the
+public API origin as a trusted CSRF origin:
+
+```text
+MEPRAM_CSRF_TRUSTED_ORIGINS=https://mepram-api-omop.<domain>
 ```
 
 ## Current Scope
