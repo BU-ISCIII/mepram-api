@@ -162,11 +162,10 @@ class EndpointSecurityTests(SimpleTestCase):
         self.assertEqual(response.status_code, 401)
         self.assertIn("Bearer", response.headers["WWW-Authenticate"])
 
-    def test_swagger_redirects_anonymous_users_to_admin_login(self):
+    def test_swagger_is_available_to_anonymous_users(self):
         response = Client().get("/v1/swagger/")
 
-        self.assertEqual(response.status_code, 302)
-        self.assertIn("/admin/login/", response.headers["Location"])
+        self.assertEqual(response.status_code, 200)
 
 
 @override_settings(MEPRAM_AUTH_REQUIRED=False, ALLOWED_HOSTS=["testserver"])
@@ -261,22 +260,6 @@ class ReportsEndpointTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), test_payload)
-
-
-@override_settings(ALLOWED_HOSTS=["testserver"])
-class DocumentationStaffAccessTests(TestCase):
-    def test_swagger_is_available_to_staff_users(self):
-        user = get_user_model().objects.create_user(
-            username="swagger-admin",
-            password="secret",
-            is_staff=True,
-        )
-        client = Client()
-        client.force_login(user)
-
-        response = client.get("/v1/swagger/")
-
-        self.assertEqual(response.status_code, 200)
 
 
 class DefaultSuperuserCommandTests(TestCase):
