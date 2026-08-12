@@ -103,9 +103,6 @@ MEPRAM_AUTH_REQUIRED = os.environ.get("MEPRAM_AUTH_REQUIRED", "false").lower() i
     "yes",
     "on",
 }
-MEPRAM_DOCS_REQUIRE_STAFF = os.environ.get(
-    "MEPRAM_DOCS_REQUIRE_STAFF", "true"
-).lower() in {"1", "true", "yes", "on"}
 MEPRAM_CREATE_DEFAULT_SUPERUSER = os.environ.get(
     "MEPRAM_CREATE_DEFAULT_SUPERUSER", "false"
 ).lower() in {"1", "true", "yes", "on"}

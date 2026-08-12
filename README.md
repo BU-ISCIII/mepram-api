@@ -58,7 +58,6 @@ MEPRAM_API_PORT=8100
 MEPRAM_CORS_ALLOWED_ORIGINS=http://127.0.0.1:3000,http://localhost:3000
 MEPRAM_CSRF_TRUSTED_ORIGINS=
 MEPRAM_AUTH_REQUIRED=true
-MEPRAM_DOCS_REQUIRE_STAFF=true
 MEPRAM_CREATE_DEFAULT_SUPERUSER=true
 DJANGO_SUPERUSER_USERNAME=admin
 DJANGO_SUPERUSER_EMAIL=admin@example.org
@@ -412,7 +411,7 @@ MEPRAM_CORS_ALLOWED_ORIGINS=http://127.0.0.1:3000,http://localhost:3000
 ```
 
 When the API is deployed behind an HTTPS reverse proxy and Django forms are
-enabled, for example protected Swagger or Django admin login, configure the
+enabled, for example the Django admin login, configure the
 public API origin as a trusted CSRF origin:
 
 ```text
