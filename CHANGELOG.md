@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixes
 
+- Fix local/test database name and dashboard schema for the deployment migration branch.
+
 #### Changed
 
 - Remove auth to access swagger [#19](https://github.com/BU-ISCIII/mepram-omop-api/pull/19)
