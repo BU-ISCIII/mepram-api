@@ -41,7 +41,7 @@
     "conf/apache/apache_production_settings.txt": "7151e5081e80803018f61c1e362a0190381fb546034a8c77ac38bd585cf05295",
     "conf/apache/apache_test_settings.txt": "6fb6cbafb12011ffbbcee91d8aab9841ea66f34361ae85cdfccf9160b5bd844a",
     "conf/docker_production_settings.txt": "3cc029c24880d2d46eee9ea5874050acda2a50f2898ec21243fcc859647217cf",
-    "conf/docker_test_settings.txt": "8c8a76114419d83d54c658f45ca7bb20dd86c205f9ae48aaee7ee356114d46fa",
+    "conf/docker_test_settings.txt": "aa3f8a2e096151f8a9773de7b145b1a8934bf44f7d9cdbc3c48db59cd4b43534",
     "conf/keycloak/keycloak_production_settings.txt": "029056aae887b8c6f10dea79e99b213533bbec63345d784140777802be4a2909",
     "conf/keycloak/keycloak_test_settings.txt": "e70011a3d2a230213d952d255b4421d75ea8f1b7cc2735c75f37666b9bd9a639",
     "conf/template_settings.py": "602581e1c2d2750c97179eada7f3905a3e6bbf3bf6b1d2e9a608faa74ab71b68",
